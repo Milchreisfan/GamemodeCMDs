@@ -1,0 +1,6 @@
+name: GamemodeCMDs
+version: 1.0.0
+api: 3.0.0
+main: Milchreisfan\GamemodeCMDs\Main
+author: Milchreisfan
+website: "https://github.com/Milchreisfan/"
