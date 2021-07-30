@@ -12,20 +12,21 @@ class GM0Command extends Command {
 
     public function __construct()
     {
-        parent::__construct("gm0", "Ändere deinen Spielmodus zu Überleben!");
+        parent::__construct("gm0", "Change your gamemode to survival!");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+        $c = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         if ($sender instanceof Player) {
             if (!$sender->hasPermission("gm0.cmd")) {
-                $sender->sendMessage("§8[§bGM§8] §3» §4Du hast keine Rechte für diesen Befehl!");
+                $sender->sendMessage($c->get("no-permissions"));
                 return;
             }
             $sender->setGamemode(0);
-            $sender->sendMessage("§8[§bGM§8] §3» §fDein Spielmodus wurde zu Überleben geändert!");
+            $sender->sendMessage($c->get("gm0-message"));
             return;
         }
-        $sender->sendMessage(TextFormat::RED . "Diesen Befehl kannst du nur Ingame ausführen.");
+        $sender->sendMessage($c->get("console"));
     }
 }

@@ -12,20 +12,21 @@ class GM3Command extends Command {
 
     public function __construct()
     {
-        parent::__construct("gm3", "Ändere deinen Spielmodus zu Zuschauer!");
+        parent::__construct("gm3", "Change your gamemode to spectator!");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+        $c = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         if ($sender instanceof Player) {
             if (!$sender->hasPermission("gm3.cmd")) {
-                $sender->sendMessage("§8[§bGM§8] §3» §4Du hast keine Rechte für diesen Befehl!");
+                $sender->sendMessage($c->get("no-permissions"));
                 return;
             }
             $sender->setGamemode(3);
-            $sender->sendMessage("§8[§bGM§8] §3» §fDein Spielmodus wurde zu Zuschauer geändert!");
+            $sender->sendMessage($c->get("gm3-message"));
             return;
         }
-        $sender->sendMessage(TextFormat::RED . "Diesen Befehl kannst du nur Ingame ausführen.");
+        $sender->sendMessage($c->get("console"));
     }
 }

@@ -19,10 +19,13 @@ use pocketmine\permission\DefaultPermissions;
 use pocketmine\permission\Permission;
 use pocketmine\Player;
 use pocketmine\Server;
+use pocketmine\utils\Config;
 
 class Main extends PluginBase implements Listener {
 
     public function onEnable() {
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->saveResource("config.yml");
         $this->getServer()->getCommandMap()->registerAll("gamemodecmds", [
             new GM0Command(),
             new GM1Command(),

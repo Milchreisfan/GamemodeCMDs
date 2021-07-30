@@ -12,20 +12,21 @@ class GM1Command extends Command {
 
     public function __construct()
     {
-        parent::__construct("gm1", "Ändere deinen Spielmodus zu Kreativ!");
+        parent::__construct("gm1", "Change your gamemode to creative!");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+        $c = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         if ($sender instanceof Player) {
             if (!$sender->hasPermission("gm1.cmd")) {
-                $sender->sendMessage("§8[§bGM§8] §3» §4Du hast keine Rechte für diesen Befehl!");
+                $sender->sendMessage($c->get("no-permissions"));
                 return;
             }
             $sender->setGamemode(1);
-            $sender->sendMessage("§8[§bGM§8] §3» §fDein Spielmodus wurde zu Kreativ geändert!");
+            $sender->sendMessage($c->get("gm1-message"));
             return;
         }
-        $sender->sendMessage(TextFormat::RED . "Diesen Befehl kannst du nur Ingame ausführen.");
+        $sender->sendMessage($c->get("console"));
     }
 }

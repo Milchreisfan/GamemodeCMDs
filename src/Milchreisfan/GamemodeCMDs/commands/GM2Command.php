@@ -12,18 +12,19 @@ class GM2Command extends Command {
 
     public function __construct()
     {
-        parent::__construct("gm2", "Ändere deinen Spielmodus zu Abenteuer!");
+        parent::__construct("gm2", "Change your gamemode to adventuere!");
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+        $c = new Config($this->getDataFolder() . "config.yml", Config::YAML);
         if ($sender instanceof Player) {
             if (!$sender->hasPermission("gm2.cmd")) {
-                $sender->sendMessage("§8[§bGM§8] §3» §4Du hast keine Rechte für diesen Befehl!");
+                $sender->sendMessage($c->get("no-permissions"));
                 return;
             }
             $sender->setGamemode(2);
-            $sender->sendMessage("§8[§bGM§8] §3» §fDein Spielmodus wurde zu Abenteuer geändert!");
+            $sender->sendMessage($c->get("gm2-message"));
             return;
         }
         $sender->sendMessage(TextFormat::RED . "Diesen Befehl kannst du nur Ingame ausführen.");

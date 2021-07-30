@@ -1,0 +1,16 @@
+# GamemodeCMDs Config
+# Thanks for using GamemodeCMDs!
+# Need Help? https://github.com/Milchreisfan
+
+# no-permissions = If the player has no permissions
+# gm0-message = If the player type /gm0
+# gm1-message = If the player type /gm1
+# gm2-message = If the player type /gm2
+# gm3-message = If the player tpye /gm3
+# console = If the commandsender is not a player
+
+no-permissions: "§4You do not have the Permission to change your gamemode!"
+gm0-message: "§aYou are now in §2survival §amode"
+gm1-message: "§aYou are now in §2creative §amode"
+gm2-message: "§aYou are now in §2adventure §amode"
+gm3-message: "§aYou are now in §2spectator §amode"
