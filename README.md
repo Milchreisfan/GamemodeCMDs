@@ -18,4 +18,4 @@ GamemodeCMDs is a plugin for pocketmine wich add short commands to switch your g
 
 # Other Languages #
 
-Other languages will be supported as soon as possible :D
+Just change the messages in config.yml :D
